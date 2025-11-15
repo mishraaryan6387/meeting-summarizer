@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Meeting Summarizer — Upload</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <div class="card">
+      <header class="card-header">
+        <h1>Meeting Summarizer</h1>
+        <p class="sub">Upload text, audio or video — we'll transcribe & summarize.</p>
+      </header>
+
+      <div class="uploader">
+        <label class="file-drop" id="fileDrop">
+          <input id="fileInput" type="file" name="file" />
+          <div class="fd-content">
+            <svg viewBox="0 0 24 24" class="icon">
+              <path d="M12 2v10m0 0l-4-4m4 4 4-4" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke="currentColor" stroke-width="1.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <div>
+              <strong>Click to choose a file</strong>
+              <div class="muted">or drag & drop here (txt, pdf, docx, mp3, mp4, wav...)</div>
+            </div>
+          </div>
+        </label>
+
+        <div class="controls">
+          <button id="uploadBtn" class="btn" disabled>Upload & Summarize</button>
+          <div id="progressWrap" class="progress-wrap hidden">
+            <div class="progress-bar" id="progressBar" style="width:0%"></div>
+          </div>
+          <div id="status" class="status">No file selected</div>
+        </div>
+      </div>
+
+      <section class="result" id="result">
+        <h3>Summary</h3>
+        <pre id="summaryText" class="summary">Your summary will appear here.</pre>
+        <ul id="bullets" class="bullets"></ul>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
