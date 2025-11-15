@@ -14,7 +14,7 @@ const mammoth = require("mammoth");
 let pdfParse = null;
 try {
   const _p = require("pdf-parse");
-  pdfParse = (typeof _p === "function") ? _p : (_p && typeof _p.default === "function" ? _p.default : null);
+  pdfParse = (typeof _p === "function") ? _p : (_p && typeof _p.default === "function" ? _p.default : (_p.PDFParse ? _p.PDFParse : null));
   if (!pdfParse) console.warn("pdf-parse loaded but no callable export found (will error if used).");
 } catch (e) {
   console.warn("pdf-parse not installed or failed to load:", e && e.message);
@@ -104,7 +104,7 @@ async function extractTextFromPdf(filePath) {
   }
   const data = fs.readFileSync(filePath);
   try {
-    const parsed = await pdfParse(data);
+    const parsed = await new pdfParse(data);
     return (parsed && typeof parsed.text === "string") ? parsed.text : String((parsed && parsed.text) || "");
   } catch (err) {
     throw new Error("pdf-parse error: " + (err && err.message ? err.message : String(err)));
