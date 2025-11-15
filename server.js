@@ -14,7 +14,7 @@ const mammoth = require("mammoth");
 let pdfParse = null;
 try {
   const _p = require("pdf-parse");
-  pdfParse = (typeof _p === "function") ? _p : null;
+  pdfParse = (typeof _p === "function") ? _p : (_p && typeof _p.default === "function" ? _p.default : null);
   if (!pdfParse) console.warn("pdf-parse loaded but no callable export found (will error if used).");
 } catch (e) {
   console.warn("pdf-parse not installed or failed to load:", e && e.message);
